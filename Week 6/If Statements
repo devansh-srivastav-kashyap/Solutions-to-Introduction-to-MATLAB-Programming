@@ -1,0 +1,6 @@
+function out= picker(cond,b,c)
+if(cond==1)
+    out=b;
+else
+    out=c;
+end
