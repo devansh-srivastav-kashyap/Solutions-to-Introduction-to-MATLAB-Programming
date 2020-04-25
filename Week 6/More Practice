@@ -1,0 +1,6 @@
+function admit= eligible(a,b)
+if(a>88 && b>88 && (a+b)/2 >=92)
+    admit=true;
+else 
+    admit=false;
+end
