@@ -1,0 +1,6 @@
+function [x,y]= minimax(M)
+mx=max(M');
+mn=min(M');
+x=mx-mn;
+y=max(M,[],'all')-min(M,[],'all');
+end
