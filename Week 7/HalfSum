@@ -1,0 +1,12 @@
+function summa= halfsum(M)
+sz=size(M);
+x=sz(1);   %total columns 
+y=sz(2);   %total rows
+t=1;
+summa=0;
+for i=1:x
+    for j=t:y
+        summa=summa+M(i,j);
+    end
+    t=t+1;
+end
