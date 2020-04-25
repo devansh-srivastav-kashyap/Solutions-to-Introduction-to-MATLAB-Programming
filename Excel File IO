@@ -1,0 +1,22 @@
+function distance= get_distance(city1,city2)
+[~,~,raw]= xlsread('Distances.xlsx');
+[x,y]=size(raw);
+d=2;
+hcell1=0;hcell2=0;
+for i=2:x
+    if (strcmpi(raw(i),city1))       %compares the city with the labels
+        hcell1= i;
+    end
+    if (strcmpi(raw(i),city2))       %compares the city with the labels
+        hcell2= i;
+    end
+end    
+if(hcell1==0 || hcell2==0)
+    d=0;
+end    
+if(d==0)
+    distance=-1;
+else
+distance=raw{hcell1,hcell2};
+end
+
