@@ -1,0 +1,4 @@
+function numfreeze = freezing(M)
+w=M<32;
+numfreeze= sum(w);
+end
