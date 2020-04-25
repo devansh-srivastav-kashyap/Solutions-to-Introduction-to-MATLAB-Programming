@@ -1,0 +1,46 @@
+function valid = valid_date(year,month,day)
+t = (isscalar(year) && isscalar(month) && isscalar(day));
+if (t == 0);
+    valid = t;
+else
+    T = ((nargin == 3) && (year>0) && ((month > 0) && (month <=12))  && ((day > 0) && (day<=31)));
+ if T
+    persistent Div_by_Four;
+    persistent Div_by_FHun;
+    persistent div_by_hund;
+    persistent leap_year;
+    leap_year=0;
+    Div_by_Four = rem(year,4);
+    Div_by_FHun = rem(year,400);
+    div_by_hund = rem(year,100);
+    if (Div_by_Four == 0)
+        leap_year = 1;
+    end
+    if (div_by_hund == 0)
+        leap_year = 0;
+    end
+    if (Div_by_FHun == 0)
+        leap_year = 1;
+    end
+    if (leap_year == 1 && month == 2)
+        valid = day<=29;
+    
+    elseif (month<=7)
+        if(month == 2)
+            valid = day<=28;
+        elseif (rem(month,2) == 0)
+            valid = day<=30;
+        else
+            valid = day<=31;
+        end
+    else
+        if (rem(month,2) == 0)
+            valid = day<=31;
+        else
+            valid = day<=30;
+        end
+    end
+ else
+    valid = T
+ end
+end
