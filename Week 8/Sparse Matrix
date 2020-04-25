@@ -1,1 +1,7 @@
-
+function matrix= sparse2matrix(cellvec)
+lng=cellvec{1,1};   %stores the length of the matrix
+matrix(1:lng(1),1:lng(2))=cellvec{1,2};   %to make a matrix with all values equal to 'default value'
+for i=3:length(cellvec)
+    matrix(cellvec{i}(1,1),cellvec{i}(1,2))=cellvec{i}(1,3);
+end
+end
