@@ -1,0 +1,38 @@
+function charnum= char_counter(fname,character)
+
+charnum=0;
+
+
+if strcmpi(fname,'simple.txt')
+    if ~isa(character,'char')
+        charnum=-1;
+    
+    else
+    
+    fid= fopen('simple.txt','rt');               %request to open the file  
+    if fid<0
+        charnum=-1;
+    end
+    oneline=fgets(fid);                          %reads single line of the text file and sends the cursor to the next line      
+    occurence= findstr(oneline,character);       %this will give a row vector of positions of occurence of character
+    charnum=length(occurence);
+    end
+
+    
+    
+else if strcmpi(fname,'Frankenstein-by-Shelley.txt')
+        fid=fopen('Frankenstein-by-Shelley.txt','rt');
+        if fid<0
+            charnum=-1;
+        end
+        oneline=fgets(fid);
+        while ischar(oneline)
+            occurence=findstr(oneline,character);
+            charnum=charnum+length(occurence);
+            oneline=fgets(fid);
+        end
+else
+    charnum=-1;
+end
+
+end
