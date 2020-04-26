@@ -1,0 +1,18 @@
+function indices = saddle(M)
+[a,b]=size(M);                                 %size of the input matrix
+indices = zeros(a+b,2);      
+count = 0;
+for i = 1:a
+    mah = max(M(i,:)) ;                        %find maximum of all the elemnents of row i  
+    [c1,c2] = find(M(i,:) == mah)              %gives the index of the maxiumu element
+    for k = 1:length(c1)
+        c1k = c1(k); c2k = c2(k);              %ensure if there are more than one max/min
+        mic = min(M(:,c2k));
+        if M(i,c2k)==mic
+            count = count+1;
+            indices(count,:) = [i,c2k];
+        end
+    end
+end
+indices = indices(1:count,:);
+end
