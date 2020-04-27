@@ -1,0 +1,36 @@
+function output= blur(img,w)
+
+arr=double(img)
+[y,x]=size(arr);
+key= 2*w+1;
+
+for i=1:y
+    for j=1:x
+        left=j-fix(key/2);     %left adjacent element of the subsquare
+        right=j+fix(key/2);     %right adjacent element of the subsquare
+        up=i-fix(key/2);        %up adjacent element of the subsquare
+        down=i+fix(key/2);      %down adjacent element of the subsquare
+        
+        if left<1
+            left=1;
+        end
+        if right>x
+            right=x;
+        end
+        if up<1
+            up=1;
+        end 
+        if down>y
+            down=y;
+        end
+        
+        subsqr=arr([up:down],[left:right]);      %this stores the subsquare
+        
+        updtdarr1(i,j)= mean(subsqr(:));      %this will put the mean into the array 
+    end
+end
+ output= uint8(updtdarr1);
+ 
+           
+
+end
